@@ -14,38 +14,28 @@
         width: 200px;
         height: 200px;
     }
-    .next1{
+
+    .next1 {
         padding: 2px;
     }
-    
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <body>
-    <h1  onMouseOver="this.style.color='blue'"
-    onMouseOut="this.style.color='black'" >WELCOME TO THE GAME: PICTURE GUESS?</h1>
-    <!-- <input type="text" id="text1" maxlength="1"onkeyup="movetoNext(this, 'text2')" />
-        <input type="text" id="text2" maxlength="1"onkeyup="movetoNext(this, 'text3')"/>
-        <input type="text" id="text3" maxlength="1"onkeyup="movetoNext(this, 'text4')"/>
-        <input type="text" id="text4" maxlength="1"onkeyup="movetoNext(this, 'text5')"/>
-        <input type="text" id="text5" maxlength="1"onkeyup="movetoNext(this, 'text6')"/>
-        <input type="text" id="text6" maxlength="1"onkeyup="movetoNext(this, 'text2')"/> -->
-    <!-- <button type="submit" id="btn222">NEXT</button> -->
+    <h1 onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">WELCOME TO THE GAME: PICTURE GUESS?
+    </h1>
     <button type="submit" id="srt1" onclick="this.style.visibility= 'hidden';">START GAME</button>
-    <!-- <img src="Images/farmer.jpg"> -->
     <div id="div1"></div>
-    <!-- <button type="submit" id="sbt1">Submit</button> -->
-    <!-- <h1 id="id"></h1>  -->
-    <!-- <button type="submit" style="visibility: hidden;" id="next1">NEXT</button> -->
-</body>
+    </body>
+
 <script>
-  
+
     srt1.addEventListener("click", display1);
-    let arr = ["FARMER","MICHAELPHELPS","ECHIDNA"];
-    let image = ["Images/farmer.jpg","Images/phelps.jpg","Images/echidna.jpg"];
+    let arr = ["FARMER", "MICHAELPHELPS", "ECHIDNA"];
+    let image = ["Images/farmer.jpg", "Images/phelps.jpg", "Images/echidna.jpg"];
     let str = arr[0];
     function display1() {
-       
+
         let img = document.createElement("img");
         img.setAttribute("src", image[0]);
         document.body.appendChild(img);
@@ -70,16 +60,14 @@
         let nxt = document.createElement("button");
         nxt.setAttribute("id", "next1");
         nxt.innerHTML = "Next";
-        nxt.setAttribute("style","visibility: hidden")
+        nxt.setAttribute("style", "visibility: hidden")
         document.body.appendChild(nxt);
         next1.addEventListener("click", display2);
-        // next1.addEventListener("click", display2);
-        //result tag
         let result1 = document.createElement("H1");
         result1.setAttribute("id", "id");
         document.body.appendChild(result1);
         //score tag
-       
+
 
         //Autofocus
         $(document).ready(function () {
@@ -92,72 +80,61 @@
     }
 
     submit1 = () => {
-        // const str = "FARMER"||"farmer";
+ 
         for (let i = 0; i < str.length; i++) {
 
             let x = str.charAt(i);
             let y = document.getElementsByTagName("input")[i].value;
 
-           if (y == ""){
+            if (y == "") {
                 document.getElementById("id").innerHTML = "Fill the box";
-             break;
+                break;
             }
             else if (x !== y) {
 
                 document.getElementById("id").innerHTML = "wrong answer";
-                document.getElementById("next1").style.visibility="visible";
+                document.getElementById("next1").style.visibility = "visible";
                 document.getElementById("sbt1").disabled = true;
-                
-                // alert("answer is FARMER");
                 break;
             }
-          
-            
+
+
             else {
-                    
-                   
-                // let m = score++;
-                // let qscore = m-4;
+
                 document.getElementById("id").innerHTML = "right answer";
-                // document.getElementById("score1").innerHTML = `Total Score: ${qscore}`;
-                document.getElementById("next1").style.visibility="visible";
-                // document.getElementById("sbt1").disabled = true;
-                
+                document.getElementById("next1").style.visibility = "visible";
             }
 
-        } 
         }
+    }
+   //question
 
-    
-
-   
-    //question
-    
     const str1 = arr[1];
     function display2() {
         document.getElementById("next1").hidden = true;
         let maindiv = document.createElement("div");
-        maindiv.setAttribute("id","mainid")
-        
- //image
+        maindiv.setAttribute("id", "mainid")
+
+        //image
         let img = document.createElement("img");
         img.setAttribute("src", image[1]);
-      
+
         document.body.appendChild(img);
-        (function(){for (let j = 0; j < str1.length; j++) {
-            let inp1 = document.createElement("input");
-            inp1.setAttribute("type", "text");
-            inp1.setAttribute("maxlength", "1");
-            inp1.setAttribute("class","text1");
-            inp1.setAttribute("id","inpText");
-            inp1.setAttribute("onkeyup","this.value = this.value.toUpperCase()");
-            inp1.setAttribute("autofocus", true);
-            document.body.appendChild(inp1);
-        }
-    })();
-    
-    
-    let btn1 = document.createElement("button");
+        (function () {
+            for (let j = 0; j < str1.length; j++) {
+                let inp1 = document.createElement("input");
+                inp1.setAttribute("type", "text");
+                inp1.setAttribute("maxlength", "1");
+                inp1.setAttribute("class", "text1");
+                inp1.setAttribute("id", "inpText");
+                inp1.setAttribute("onkeyup", "this.value = this.value.toUpperCase()");
+                inp1.setAttribute("autofocus", true);
+                document.body.appendChild(inp1);
+            }
+        })();
+
+
+        let btn1 = document.createElement("button");
         btn1.setAttribute("id", "sbt2");
         btn1.innerHTML = "Submit";
         // btn1.setAttribute("style","visibility: hidden")
@@ -167,7 +144,7 @@
         let nxt1 = document.createElement("button");
         nxt1.setAttribute("id", "next2");
         nxt1.innerHTML = "Next";
-        nxt1.setAttribute("style","visibility: hidden")
+        nxt1.setAttribute("style", "visibility: hidden")
         document.body.appendChild(nxt1);
         next2.addEventListener("click", display3);
         // result tag
@@ -175,7 +152,7 @@
         result2.setAttribute("id", "id1");
         document.body.appendChild(result2);
         //score tag
-     
+
 
         //Autofocus
         $(document).ready(function () {
@@ -185,93 +162,79 @@
                 }
             });
         });
-        
+
     }
     submit2 = () => {
-            // let str1 = "HAMPI";
-         
+        // let str1 = "HAMPI";
+
         for (let j = 0; j < str1.length; j++) {
 
-           
             let a = document.getElementsByClassName("text1")[j].value;
-            if (a == ""){
+            if (a == "") {
                 document.getElementById("id1").innerHTML = "Fill the box";
                 break;
             }
-            
+
             if (a !== str1.charAt(j)) {
 
                 document.getElementById("id1").innerHTML = "wrong answer";
-                document.getElementById("next2").style.visibility="visible";
+                document.getElementById("next2").style.visibility = "visible";
                 document.getElementById("sbt2").disabled = true;
-               
-                // alert("answer is FARMER");
                 break;
             }
             else {
-               
-                // let n = qscore++;
-                // let qscore1 = m-3;
                 document.getElementById("id1").innerHTML = "right answer";
-                // document.getElementById("score1").innerHTML = `Total Score: ${qscore1}`;
-                document.getElementById("next2").style.visibility="visible";
-                // document.getElementById("sbt2").disabled = true;
+                document.getElementById("next2").style.visibility = "visible";
             }
         }
-          
-            // document.getElementById("score1").innerHTML= `Total Score: ${qs++}`;
-        }
-
-    
+    }
 
 
-// //question
+
+
+    // //question
     const str2 = arr[2];
     function display3() {
         document.getElementById("next2").hidden = true;
         let maindiv = document.createElement("div");
-        maindiv.setAttribute("id","mainid")
-        
- //image
+        maindiv.setAttribute("id", "mainid")
+
+        //image
         let img = document.createElement("img");
         img.setAttribute("src", image[2]);
         document.body.appendChild(img);
-        (function(){for (let j = 0; j < str2.length; j++) {
-            let inp1 = document.createElement("input");
-            inp1.setAttribute("type", "text");
-            inp1.setAttribute("maxlength", "1");
-            inp1.setAttribute("class","text2");
-            inp1.setAttribute("id","inpText");
-            inp1.setAttribute("onkeyup","this.value = this.value.toUpperCase()");
-            inp1.setAttribute("autofocus", true);
-            document.body.appendChild(inp1);
-        }
-    })();
-    
+        (function () {
+            for (let j = 0; j < str2.length; j++) {
+                let inp1 = document.createElement("input");
+                inp1.setAttribute("type", "text");
+                inp1.setAttribute("maxlength", "1");
+                inp1.setAttribute("class", "text2");
+                inp1.setAttribute("id", "inpText");
+                inp1.setAttribute("onkeyup", "this.value = this.value.toUpperCase()");
+                inp1.setAttribute("autofocus", true);
+                document.body.appendChild(inp1);
+            }
+        })();
 
-    let btn1 = document.createElement("button");
+
+        let btn1 = document.createElement("button");
         btn1.setAttribute("id", "sbt3");
         btn1.innerHTML = "Submit";
-        // btn1.setAttribute("style","visibility: hidden")
+       
         document.body.appendChild(btn1);
         sbt3.addEventListener("click", submit3);
         //Next button
         let nxt1 = document.createElement("button");
         nxt1.setAttribute("id", "next2");
         nxt1.innerHTML = "Next";
-        nxt1.setAttribute("style","visibility: hidden")
+        nxt1.setAttribute("style", "visibility: hidden")
         document.body.appendChild(nxt1);
-        // next1.addEventListener("click", display2);   
+       
         // result tag
         let result2 = document.createElement("H1");
         result2.setAttribute("id", "id2");
         document.body.appendChild(result2);
-        //score tag
-        // let score1 = document.createElement("H1");
-        // score1.setAttribute("id", "score1");
-        // document.body.appendChild(score1);
-
-        //Autofocus
+       //Autofocus
         $(document).ready(function () {
             $('input').keyup(function () {
                 if ($(this).val().length == $(this).attr("maxlength")) {
@@ -279,33 +242,29 @@
                 }
             });
         });
-        
+
     }
     submit3 = () => {
-            // let str2 = "LAPTOP";
-         
+
         for (let j = 0; j < str2.length; j++) {
 
-           
+
             let a = document.getElementsByClassName("text2")[j].value;
-            if (a == ""){
+            if (a == "") {
                 document.getElementById("id2").innerHTML = "Fill the box";
                 break;
             }
             if (a !== str2.charAt(j)) {
 
                 document.getElementById("id2").innerHTML = "wrong answer";
-                document.getElementById("next2").style.visibility="visible";
+                document.getElementById("next2").style.visibility = "visible";
                 document.getElementById("sbt3").disabled = true;
-                // alert("answer is FARMER");
                 break;
             }
             else {
-                
+
                 document.getElementById("id2").innerHTML = "right answer";
-                // document.getElementById("score1").innerHTML = `Total Score: ${score}`;
-                document.getElementById("next2").style.visibility="visible";
-                // document.getElementById("sbt3").disabled = true;
+                document.getElementById("next2").style.visibility = "visible";
             }
         }
 
