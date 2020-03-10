@@ -4,41 +4,123 @@
     <title>Picture Guess</title>
 </head>
 <style>
+    body {
+        background-image: url(https://images.wallpaperscraft.com/image/surface_background_texture_light_51008_1680x1050.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
     input {
         width: 20px;
         padding: 2px;
-        margin-left: 2px;
+        margin-left: 15px;
+        margin-top: 15px;
     }
 
     img {
-        width: 200px;
+        width: 230px;
         height: 200px;
+        padding: 10px;
+    }
+
+    #sbt,
+    #sbt1,
+    #sbt2 {
+        margin-left: 10px;
+        margin-top: 10px;
     }
 
     .next1 {
         padding: 2px;
     }
+
+    #div {
+        margin-left: 100px;
+
+    }
+
+    @media only screen and (max-width: 400px) {
+        #div2 {
+            margin-left: 100px;
+
+        }
+    }
+
+    /* #div1{
+
+        border: 2px solid blue;
+        background-color:transparent;
+    }
+  
+    #div2{
+        border: 2px solid blue;
+        background-color:transparent;
+    } */
+    #Heading {
+        text-align: center;
+        color: rgb(104, 14, 14);
+        margin-left: 20%;
+        margin-right: 20%;
+        border: 2px solid rgb(104, 14, 14);
+        box-shadow: 6px 6px rgb(104, 14, 14);
+    }
+
+    #srt1,
+    #next1,
+    #next2,
+    #sbt1,
+    #sbt2,
+    #sbt3 {
+        border: 2px solid rgb(104, 14, 14);
+        background-color: transparent;
+        box-shadow: 6px 6px rgb(104, 14, 14);
+    }
+
+    #next1,
+    #next2 {
+        margin: 10px;
+    }
+
+    #div,
+    #div1,
+    #div2 {
+        width: 250px;
+        height: 400px;
+        margin-left: 150px;
+        margin-top: 100px;
+        float: left;
+        border: 2px solid rgb(104, 14, 14);
+        background-color: transparent;
+        box-shadow: 6px 6px rgb(104, 14, 14);
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <body>
-    <h1 onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='black'">WELCOME TO THE GAME: PICTURE GUESS?
+    <h1 id="Heading">WELCOME TO THE GAME: PICTURE GUESS?
     </h1>
-    <button type="submit" id="srt1" onclick="this.style.visibility= 'hidden';">START GAME</button>
-    <div id="div1"></div>
-    </body>
-
+    <button type="submit" id="srt1" style="margin-left: 45%;" ;" onclick="this.style.visibility= 'hidden';">START
+        GAME</button>
+</body>
 <script>
 
     srt1.addEventListener("click", display1);
-    let arr = ["FARMER", "MICHAELPHELPS", "ECHIDNA"];
-    let image = ["Images/farmer.jpg", "Images/phelps.jpg", "Images/echidna.jpg"];
+    let arr = ["FARMER", "MICHAELPHELPS", "DAFFYDUCK"];
+    let image = ["Images/farmer.jpg", "Images/phelps.jpg", "Images/daffy duck.png"];
+
+
     let str = arr[0];
     function display1() {
-
+        let Maindiv = document.createElement("div");
+        Maindiv.setAttribute("id", "Maindiv");
+        document.body.appendChild(Maindiv);
+        let div = document.createElement("div");
+        div.setAttribute("id", "div");
+        Maindiv.appendChild(div);
         let img = document.createElement("img");
         img.setAttribute("src", image[0]);
-        document.body.appendChild(img);
+        div.appendChild(img);
         //Input Text
         for (let i = 0; i < str.length; i++) {
             let inp = document.createElement("input");
@@ -47,29 +129,29 @@
             inp.setAttribute("class", "text");
             inp.setAttribute("onkeyup", "this.value = this.value.toUpperCase()");
             inp.setAttribute("autofocus", "autofocus");
-            document.body.appendChild(inp);
+            div.appendChild(inp);
 
         }
         //Submit button
         let btn = document.createElement("button");
         btn.setAttribute("id", "sbt1");
         btn.innerHTML = "Submit";
-        document.body.appendChild(btn);
+        div.appendChild(btn);
         sbt1.addEventListener("click", submit1);
         //Next button
         let nxt = document.createElement("button");
         nxt.setAttribute("id", "next1");
         nxt.innerHTML = "Next";
         nxt.setAttribute("style", "visibility: hidden")
-        document.body.appendChild(nxt);
+        div.appendChild(nxt);
         next1.addEventListener("click", display2);
+        // next1.addEventListener("click", display2);
+        //result tag
         let result1 = document.createElement("H1");
         result1.setAttribute("id", "id");
-        document.body.appendChild(result1);
-        //score tag
-
-
-        //Autofocus
+        div.appendChild(result1);
+     
+           //Autofocus
         $(document).ready(function () {
             $('input').keyup(function () {
                 if ($(this).val().length == $(this).attr("maxlength")) {
@@ -77,10 +159,7 @@
                 }
             });
         });
-    }
-
-    submit1 = () => {
- 
+        submit1 = () => {
         for (let i = 0; i < str.length; i++) {
 
             let x = str.charAt(i);
@@ -92,34 +171,35 @@
             }
             else if (x !== y) {
 
-                document.getElementById("id").innerHTML = "wrong answer";
+                document.getElementById("id").innerHTML = "Wrong Answer";
+                document.getElementById("id").style.color = "red";
                 document.getElementById("next1").style.visibility = "visible";
                 document.getElementById("sbt1").disabled = true;
                 break;
             }
-
-
             else {
-
-                document.getElementById("id").innerHTML = "right answer";
+                document.getElementById("id").innerHTML = "Right Answer";
                 document.getElementById("next1").style.visibility = "visible";
+                document.getElementById("id").style.color = "green";
+                document.getElementById("sbt1").disabled = true;
             }
 
         }
     }
-   //question
+     //question
 
     const str1 = arr[1];
     function display2() {
         document.getElementById("next1").hidden = true;
-        let maindiv = document.createElement("div");
-        maindiv.setAttribute("id", "mainid")
 
+        let div1 = document.createElement("div");
+        div1.setAttribute("id", "div1");
+        Maindiv.appendChild(div1);
         //image
         let img = document.createElement("img");
         img.setAttribute("src", image[1]);
 
-        document.body.appendChild(img);
+        div1.appendChild(img);
         (function () {
             for (let j = 0; j < str1.length; j++) {
                 let inp1 = document.createElement("input");
@@ -129,7 +209,7 @@
                 inp1.setAttribute("id", "inpText");
                 inp1.setAttribute("onkeyup", "this.value = this.value.toUpperCase()");
                 inp1.setAttribute("autofocus", true);
-                document.body.appendChild(inp1);
+                div1.appendChild(inp1);
             }
         })();
 
@@ -138,19 +218,19 @@
         btn1.setAttribute("id", "sbt2");
         btn1.innerHTML = "Submit";
         // btn1.setAttribute("style","visibility: hidden")
-        document.body.appendChild(btn1);
+        div1.appendChild(btn1);
         sbt2.addEventListener("click", submit2);
         //Next button
         let nxt1 = document.createElement("button");
         nxt1.setAttribute("id", "next2");
         nxt1.innerHTML = "Next";
         nxt1.setAttribute("style", "visibility: hidden")
-        document.body.appendChild(nxt1);
+        div1.appendChild(nxt1);
         next2.addEventListener("click", display3);
         // result tag
         let result2 = document.createElement("H1");
         result2.setAttribute("id", "id1");
-        document.body.appendChild(result2);
+        div1.appendChild(result2);
         //score tag
 
 
@@ -165,9 +245,8 @@
 
     }
     submit2 = () => {
-        // let str1 = "HAMPI";
+            for (let j = 0; j < str1.length; j++) {
 
-        for (let j = 0; j < str1.length; j++) {
 
             let a = document.getElementsByClassName("text1")[j].value;
             if (a == "") {
@@ -176,33 +255,32 @@
             }
 
             if (a !== str1.charAt(j)) {
-
-                document.getElementById("id1").innerHTML = "wrong answer";
+                document.getElementById("id1").style.color = "red";
+                document.getElementById("id1").innerHTML = "Wrong Answer";
                 document.getElementById("next2").style.visibility = "visible";
                 document.getElementById("sbt2").disabled = true;
                 break;
             }
             else {
-                document.getElementById("id1").innerHTML = "right answer";
+
+                document.getElementById("id1").innerHTML = "Right Answer";
+                document.getElementById("sbt2").disabled = true;
                 document.getElementById("next2").style.visibility = "visible";
+                document.getElementById("id1").style.color = "green";
             }
         }
+
     }
-
-
-
-
-    // //question
+      // //question
     const str2 = arr[2];
     function display3() {
         document.getElementById("next2").hidden = true;
-        let maindiv = document.createElement("div");
-        maindiv.setAttribute("id", "mainid")
-
-        //image
+        let div2 = document.createElement("div");
+        div2.setAttribute("id", "div2");
+        Maindiv.appendChild(div2);
         let img = document.createElement("img");
         img.setAttribute("src", image[2]);
-        document.body.appendChild(img);
+        div2.appendChild(img);
         (function () {
             for (let j = 0; j < str2.length; j++) {
                 let inp1 = document.createElement("input");
@@ -212,7 +290,7 @@
                 inp1.setAttribute("id", "inpText");
                 inp1.setAttribute("onkeyup", "this.value = this.value.toUpperCase()");
                 inp1.setAttribute("autofocus", true);
-                document.body.appendChild(inp1);
+                div2.appendChild(inp1);
             }
         })();
 
@@ -220,21 +298,21 @@
         let btn1 = document.createElement("button");
         btn1.setAttribute("id", "sbt3");
         btn1.innerHTML = "Submit";
-       
-        document.body.appendChild(btn1);
+        // btn1.setAttribute("style","visibility: hidden")
+        div2.appendChild(btn1);
         sbt3.addEventListener("click", submit3);
         //Next button
         let nxt1 = document.createElement("button");
         nxt1.setAttribute("id", "next2");
         nxt1.innerHTML = "Next";
         nxt1.setAttribute("style", "visibility: hidden")
-        document.body.appendChild(nxt1);
-       
+        div2.appendChild(nxt1);
+        // next1.addEventListener("click", display2);   
         // result tag
         let result2 = document.createElement("H1");
         result2.setAttribute("id", "id2");
-        document.body.appendChild(result2);
-       //Autofocus
+        div2.appendChild(result2);
+        //Autofocus
         $(document).ready(function () {
             $('input').keyup(function () {
                 if ($(this).val().length == $(this).attr("maxlength")) {
@@ -245,26 +323,26 @@
 
     }
     submit3 = () => {
-
         for (let j = 0; j < str2.length; j++) {
-
-
             let a = document.getElementsByClassName("text2")[j].value;
             if (a == "") {
                 document.getElementById("id2").innerHTML = "Fill the box";
                 break;
             }
             if (a !== str2.charAt(j)) {
-
-                document.getElementById("id2").innerHTML = "wrong answer";
+                document.getElementById("id2").style.color = "red";
+                document.getElementById("id2").innerHTML = "Wrong Answer";
                 document.getElementById("next2").style.visibility = "visible";
                 document.getElementById("sbt3").disabled = true;
+                // alert("answer is FARMER");
                 break;
             }
             else {
-
-                document.getElementById("id2").innerHTML = "right answer";
+                document.getElementById("id2").style.color = "green";
+                document.getElementById("id2").innerHTML = "Right Answer";
+                // document.getElementById("score1").innerHTML = `Total Score: ${score}`;
                 document.getElementById("next2").style.visibility = "visible";
+                document.getElementById("sbt3").disabled = true;
             }
         }
 
